@@ -1,5 +1,6 @@
 import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
+import AuthStatus from './components/AuthStatus'
 
 const config: DocsThemeConfig = {
   logo: <span>Nexus Docs</span>,
@@ -20,6 +21,9 @@ const config: DocsThemeConfig = {
     return {
       titleTemplate: '%s – Nexus Docs'
     }
+  },
+  navbar: {
+    extraContent: () => <AuthStatus />
   }
 }
 

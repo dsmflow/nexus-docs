@@ -6,5 +6,9 @@
   "strategies": "Trading Strategies",
   "integrations": "Integrations",
   "api": "API Reference",
-  "support": "Support"
+  "support": "Support",
+  "login": {
+    "title": "Login",
+    "display": "hidden"
+  }
 }
