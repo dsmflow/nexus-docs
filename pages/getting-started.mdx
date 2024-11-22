@@ -1,0 +1,60 @@
+# Quick Start Guide
+
+Welcome to Nexus Trading! This guide will help you get started with our platform and make your first analysis.
+
+## Installation
+
+```bash
+npm install nexus-trading
+# or
+yarn add nexus-trading
+```
+
+## Environment Setup
+
+1. Create a configuration file
+2. Set up your API keys
+3. Initialize the platform
+
+```javascript
+import { NexusTrading } from 'nexus-trading';
+
+const nexus = new NexusTrading({
+  apiKey: 'your-api-key',
+  environment: 'production'
+});
+```
+
+## Your First Analysis
+
+Here's a simple example of performing basic technical analysis:
+
+```javascript
+// Get historical data for a symbol
+const data = await nexus.getHistoricalData('AAPL', {
+  interval: '1d',
+  period: '1mo'
+});
+
+// Perform analysis
+const analysis = await nexus.analyze(data, {
+  indicators: ['SMA', 'RSI'],
+  aiEnhanced: true
+});
+
+console.log(analysis.summary);
+```
+
+## Next Steps
+
+- Explore our [Technical Indicators](/technical-analysis)
+- Learn about our [ML Models](/ml-models)
+- Check out the complete [API Reference](/api)
+
+## Common Issues
+
+- **API Connection**: Ensure your API key is properly configured
+- **Data Limits**: Be aware of rate limits and data quotas
+- **Analysis Timeouts**: Large datasets may require pagination
+
+Need help? Visit our [Support Portal](/support) for assistance.

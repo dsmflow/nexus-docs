@@ -1,0 +1,132 @@
+# Trading Strategies
+
+Learn how to combine Nexus Trading's technical analysis and ML capabilities to create sophisticated trading strategies.
+
+## Strategy Components
+
+### 1. Signal Generation
+
+```javascript
+// Example of combining technical and ML signals
+const strategy = await nexus.createStrategy({
+  name: 'ML-Enhanced Trend Following',
+  signals: {
+    technical: ['SMA', 'RSI'],
+    ml: ['trend-prediction', 'sentiment']
+  }
+});
+
+// Add custom signal logic
+strategy.addSignal({
+  name: 'CrossoverWithSentiment',
+  condition: (data) => {
+    return {
+      isBullish: data.sma.crossover.bullish && data.sentiment.score > 0.6,
+      isBearish: data.sma.crossover.bearish && data.sentiment.score < 0.4
+    };
+  }
+});
+```
+
+### 2. Risk Management
+
+```javascript
+// Implementing position sizing with ML risk assessment
+strategy.setRiskManagement({
+  maxPositionSize: '20%',
+  stopLoss: {
+    technical: '2%',
+    mlAdjusted: true // Adjusts based on ML volatility prediction
+  },
+  positionSizing: (signal) => {
+    return Math.min(
+      signal.confidence * 0.2, // Scale with ML confidence
+      0.2 // Maximum 20% of portfolio
+    );
+  }
+});
+```
+
+## Example Strategies
+
+### Trend Following with ML Enhancement
+
+```javascript
+import { Strategy } from 'nexus-trading';
+
+// Create a new ML-enhanced trend following strategy
+const mlTrendStrategy = new Strategy({
+  name: 'ML-Enhanced Trend',
+  timeframe: '1d',
+  assets: ['AAPL', 'GOOGL', 'MSFT']
+});
+
+// Add technical indicators
+mlTrendStrategy.addIndicator('SMA', { period: 50 });
+mlTrendStrategy.addIndicator('RSI', { period: 14 });
+
+// Add ML components
+mlTrendStrategy.addMLModel('TrendPredictor', {
+  horizon: '5d',
+  confidence: true
+});
+
+// Define entry/exit rules
+mlTrendStrategy.setRules({
+  entry: (data) => {
+    return data.technical.sma.trending &&
+           data.ml.confidence > 0.7 &&
+           data.ml.direction === 'up';
+  },
+  exit: (data) => {
+    return data.ml.confidence < 0.5 ||
+           data.technical.rsi > 70;
+  }
+});
+```
+
+## Backtesting
+
+```javascript
+// Run backtest with historical data
+const results = await strategy.backtest({
+  period: '1y',
+  initialCapital: 100000,
+  fees: {
+    maker: 0.001,
+    taker: 0.002
+  }
+});
+
+console.log('Strategy Performance:', results.metrics);
+```
+
+## Best Practices
+
+1. **Validation**
+   - Always backtest strategies thoroughly
+   - Use out-of-sample data for testing
+   - Consider different market conditions
+
+2. **Risk Management**
+   - Implement position sizing
+   - Set appropriate stop losses
+   - Diversify across assets
+
+3. **ML Integration**
+   - Use ML signals as confirmation
+   - Consider confidence scores
+   - Monitor model performance
+
+4. **Monitoring**
+   - Track strategy performance
+   - Monitor ML model accuracy
+   - Adjust parameters as needed
+
+## Interactive Strategy Builder
+
+import { StrategyBuilder } from '../components/strategy-builder'
+
+<StrategyBuilder />
+
+Try our interactive strategy builder to combine technical indicators and ML models into a custom trading strategy.
