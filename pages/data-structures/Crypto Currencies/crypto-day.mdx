@@ -1,0 +1,30 @@
+# Crypto Daily Charts
+
+Daily candlestick data for cryptocurrency trading pairs from Polygon.io.
+
+## Data Structure
+
+| Field         | Description                                    | Type              | Example           |
+|--------------|------------------------------------------------|-------------------|-------------------|
+| ticker       | Trading pair identifier with X: prefix          | string           | X:BTCUSD         |
+| volume       | Trading volume for the day                      | decimal/float    | 1441646.87568    |
+| open         | Opening price for the day                       | decimal/float    | 6.876            |
+| close        | Closing price for the day                       | decimal/float    | 6.947            |
+| high         | Highest price during the day                    | decimal/float    | 7.048            |
+| low          | Lowest price during the day                     | decimal/float    | 6.74121          |
+| window_start | Start timestamp of the day (Unix ms)            | integer          | 1680047999999    |
+| transactions | Number of trades during the day                 | integer          | 25603            |
+
+## Example Data
+
+```csv
+ticker,volume,open,close,high,low,window_start,transactions
+X:BTCUSD,1441646.87568,6.876,6.947,7.048,6.74121,1680047999999,25603
+```
+
+## Notes
+
+- All timestamps are in Unix milliseconds format
+- Trading pairs follow the format X:BASECURRENCY[QUOTECURRENCY]
+- Volume represents the total amount of base currency traded
+- Transactions field represents the total number of trades executed during the day

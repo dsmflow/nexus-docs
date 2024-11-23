@@ -1,0 +1,47 @@
+# Data Structures
+
+This section provides detailed information about the market data structures used in the Nexus Trading platform, specifically focusing on data from Polygon.io.
+
+## Available Data Types
+
+### Cryptocurrency Data
+- **Daily OHLCV**: Daily candlestick data with volume and transaction count
+- **Minute OHLCV**: Minute-by-minute candlestick data with volume
+- **Trade Level Data**: Individual trade executions with price and size
+
+### Forex Data
+- **Daily OHLCV**: Daily candlestick data for currency pairs, including open, high, low, close, and volume
+- **Trade Level Data**: Individual forex trade executions with bid/ask prices and exchange information
+
+### Options Data
+- **Daily OHLCV**: Daily candlestick data for options contracts
+- **Minute OHLCV**: Minute-by-minute candlestick data for options
+- **Trade Level Data**: Individual options trade executions with price and size
+
+### Stocks Data
+- **Daily OHLCV**: Daily candlestick data for stocks
+- **Minute OHLCV**: Minute-by-minute candlestick data for stocks
+- **Trade Level Data**: Individual stock trades with exchange and condition information
+
+## Common Fields
+
+Most OHLCV data types share these base fields:
+
+| Field    | Description                                    | Type              |
+|----------|------------------------------------------------|-------------------|
+| ticker   | Trading symbol identifier                      | string           |
+| volume   | Trading volume for the period                  | decimal/float    |
+| open     | Opening price for the period                   | decimal/float    |
+| close    | Closing price for the period                   | decimal/float    |
+| high     | Highest price during the period                | decimal/float    |
+| low      | Lowest price during the period                 | decimal/float    |
+| window_start | Start timestamp of the period              | integer          |
+| transactions | Number of trades in the period             | integer          |
+
+## Ticker Formats
+
+Different asset classes use specific ticker formats:
+- Cryptocurrency pairs are prefixed with `X:` (e.g., `X:BTCUSD`)
+- Forex pairs are prefixed with `X:` and use hyphens (e.g., `X:EUR-USD`)
+- Options contracts are prefixed with `O:` (e.g., `O:SPY230327P00390000`)
+- Stocks use standard NYSE/NASDAQ symbols (e.g., `MSFT`, `AAPL`)

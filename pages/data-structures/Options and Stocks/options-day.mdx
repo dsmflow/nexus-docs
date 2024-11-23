@@ -1,0 +1,50 @@
+# Options Daily OHLCV Data
+
+This document describes the structure of daily options candlestick (OHLCV) data available in the Nexus Trading platform.
+
+## Data Structure
+
+Each options daily candlestick record contains the following fields:
+
+| Field         | Type    | Description                                           |
+|---------------|---------|-------------------------------------------------------|
+| ticker        | string  | Options contract identifier (e.g., O:SPY230327P00390000) |
+| volume        | integer | Trading volume for the day                            |
+| open          | float   | Opening price for the day                            |
+| close         | float   | Closing price for the day                            |
+| high          | float   | Highest price during the day                         |
+| low           | float   | Lowest price during the day                          |
+| window_start  | integer | Start timestamp of the window in milliseconds        |
+| transactions  | integer | Number of trades executed during the day             |
+
+## Options Ticker Format
+
+Options tickers follow the format: `O:SYMBOL[YYMMDD][C/P][STRIKE]`
+- `O:` - Prefix indicating an options contract
+- `SYMBOL` - Underlying asset symbol (e.g., SPY, IWM)
+- `YYMMDD` - Expiration date (YY=year, MM=month, DD=day)
+- `C/P` - Option type (C=Call, P=Put)
+- `STRIKE` - Strike price (multiplied by 1000)
+
+Example: `O:SPY230327P00390000`
+- SPY: Underlying asset is SPY ETF
+- 230327: Expires on March 27, 2023
+- P: Put option
+- 00390000: Strike price of $390.00
+
+## Example Data
+
+```csv
+ticker,volume,open,close,high,low,window_start,transactions
+O:SPY230327P00390000,200,11.82,9.83,11.82,8.09,1678680000000,62
+O:IWM230327C00137000,1,35.77,35.77,35.77,35.77,1679889600000,1
+O:NANOS230327C00400000,2,1.17,0.26,1.17,0.26,1679889600000,2
+```
+
+## Data Interpretation
+
+- Volume represents the number of contracts traded
+- Prices are in dollars per share (not per contract)
+- Each contract typically represents 100 shares of the underlying asset
+- Window start time is in Unix milliseconds format
+- Transactions count provides insight into daily trading activity

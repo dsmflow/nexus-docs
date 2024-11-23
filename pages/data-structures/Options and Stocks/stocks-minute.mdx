@@ -1,0 +1,45 @@
+# Stocks Minute OHLCV Data
+
+This document describes the structure of minute-by-minute stock candlestick (OHLCV) data available in the Nexus Trading platform.
+
+## Data Structure
+
+Each stock minute candlestick record contains the following fields:
+
+| Field         | Type    | Description                                    |
+|---------------|---------|------------------------------------------------|
+| ticker        | string  | Stock symbol (e.g., MSFT, AAPL)               |
+| volume        | integer | Trading volume for the minute                  |
+| open          | float   | Opening price for the minute                   |
+| close         | float   | Closing price for the minute                   |
+| high          | float   | Highest price during the minute                |
+| low           | float   | Lowest price during the minute                 |
+| window_start  | integer | Start timestamp of the minute in milliseconds  |
+| transactions  | integer | Number of trades executed during the minute    |
+
+## Stock Ticker Format
+
+Stock tickers are standard NYSE/NASDAQ symbols:
+- Regular stocks: 1-4 capital letters (e.g., MSFT, AAPL)
+- Some stocks may have a fifth character for special classes
+- No special prefixes are used for regular stocks
+
+## Example Data
+
+```csv
+ticker,volume,open,close,high,low,window_start,transactions
+MSFT,1975,276.75,275.52,276.75,275.25,1679990400000,83
+MSFT,2349,275.20,274.46,275.20,274.46,1679990460000,99
+MSFT,1739,274.54,274.50,274.54,274.15,1679990520000,55
+MSFT,1269,275.85,275.72,275.85,275.72,1680008580000,53
+```
+
+## Data Interpretation
+
+- Volume represents the number of shares traded in that minute
+- Prices are in dollars per share
+- Window start time is in Unix milliseconds format, representing the start of the minute
+- Transactions count shows trading activity within the minute
+- High and low prices show the minute's trading range
+- Equal OHLC values in a minute typically indicate low volatility or single-price trading
+- Data is time-ordered by window_start timestamp

@@ -1,0 +1,42 @@
+# Cryptocurrency Candlestick Data
+
+Candlestick (OHLCV) data for cryptocurrency trading pairs from Polygon.io, available in both daily and minute-by-minute intervals.
+
+## Data Structure
+
+| Field         | Description                                    | Type              | Example           |
+|--------------|------------------------------------------------|-------------------|-------------------|
+| ticker       | Trading pair identifier with X: prefix          | string           | X:BTCUSD         |
+| volume       | Trading volume for the period                   | decimal/float    | 1441646.87568    |
+| open         | Opening price for the period                    | decimal/float    | 27142.85         |
+| close        | Closing price for the period                    | decimal/float    | 27139.64         |
+| high         | Highest price during the period                 | decimal/float    | 27145.22         |
+| low          | Lowest price during the period                  | decimal/float    | 27098.1          |
+| window_start | Start timestamp of the period (Unix ms)         | integer          | 1679961600000    |
+| transactions | Number of trades during the period              | integer          | 25603            |
+
+## Daily Data Example
+
+```csv
+ticker,volume,open,close,high,low,window_start,transactions
+X:BTCUSD,1441646.87568,6.876,6.947,7.048,6.74121,1680047999999,25603
+X:ETHUSD,443462.93516,0.3457,0.36816,0.3703,0.34252,1680047999999,41699
+X:SOLUSD,1627025.70890,19.92,20.45,20.88,19.6,1680047999999,39358
+```
+
+## Minute Data Example
+
+```csv
+ticker,volume,open,close,high,low,start_window,timestamp
+X:BTCUSD,35.81103311,27142.85,27139.64,27145.22,27098.1,1679961600000,394
+X:BTCUSD,31.57025359,27139.65,27169.39,27179.44,27122,1679961660000,599
+X:BTCUSD,13.40218690,27169.39,27143.01,27173.83,27128,1679961720000,371
+```
+
+## Notes
+
+- All timestamps are in Unix milliseconds format
+- Trading pairs follow the format X:BASECURRENCY[QUOTECURRENCY]
+- Volume represents the total amount of base currency traded
+- The transactions field represents the total number of trades executed during the period
+- Minute data includes an additional timestamp field for more precise temporal reference

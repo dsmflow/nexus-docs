@@ -1,0 +1,52 @@
+# Options Trade Level Data
+
+This document describes the structure of options trade level data available in the Nexus Trading platform.
+
+## Data Structure
+
+Each options trade record contains the following fields:
+
+| Field                | Type    | Description                                           |
+|---------------------|---------|-------------------------------------------------------|
+| ticker              | string  | Options contract identifier (e.g., O:SPY230327P00390000) |
+| price               | float   | Trade execution price                                 |
+| size                | integer | Number of contracts traded                            |
+| exchange            | integer | Exchange where the trade occurred                     |
+| conditions          | string  | List of condition codes for the trade                 |
+| participant_timestamp| integer | Nanosecond precision timestamp of trade execution    |
+| sequence_number     | integer | Trade sequence identifier                             |
+| sip_timestamp      | integer | SIP (Securities Information Processor) timestamp      |
+| id                 | string  | Unique trade identifier                               |
+| tape               | string  | Tape identifier (market category)                     |
+
+## Options Ticker Format
+
+Options tickers follow the format: `O:SYMBOL[YYMMDD][C/P][STRIKE]`
+- `O:` - Prefix indicating an options contract
+- `SYMBOL` - Underlying asset symbol (e.g., SPY, IWM)
+- `YYMMDD` - Expiration date (YY=year, MM=month, DD=day)
+- `C/P` - Option type (C=Call, P=Put)
+- `STRIKE` - Strike price (multiplied by 1000)
+
+Example: `O:SPY230327P00390000`
+- SPY: Underlying asset is SPY ETF
+- 230327: Expires on March 27, 2023
+- P: Put option
+- 00390000: Strike price of $390.00
+
+## Example Data
+
+```csv
+ticker,conditions,exchange,id,participant_timestamp,price,sequence_number,sip_timestamp,size,tape
+O:SPY230327P00390000,12,11,1,1679990400018025984,11.82,1550,1679990400018381329,1,3
+O:IWM230327C00137000,12,8,1,1679990400000110000,35.77,1,1679990400000110000,1,3
+```
+
+## Data Interpretation
+
+- Price is in dollars per share (not per contract)
+- Size represents the number of contracts traded
+- Each contract typically represents 100 shares of the underlying asset
+- Exchange codes represent different options exchanges
+- Condition codes indicate special trade conditions
+- Timestamps are in nanosecond precision Unix format

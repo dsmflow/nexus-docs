@@ -1,0 +1,44 @@
+# Stocks Daily OHLCV Data
+
+This document describes the structure of daily stock candlestick (OHLCV) data available in the Nexus Trading platform.
+
+## Data Structure
+
+Each stock daily candlestick record contains the following fields:
+
+| Field         | Type    | Description                                    |
+|---------------|---------|------------------------------------------------|
+| ticker        | string  | Stock symbol (e.g., MSFT, AAPL)               |
+| volume        | integer | Trading volume for the day                     |
+| open          | float   | Opening price for the day                      |
+| close         | float   | Closing price for the day                      |
+| high          | float   | Highest price during the day                   |
+| low           | float   | Lowest price during the day                    |
+| window_start  | integer | Start timestamp of the day in milliseconds     |
+| transactions  | integer | Number of trades executed during the day       |
+
+## Stock Ticker Format
+
+Stock tickers are standard NYSE/NASDAQ symbols:
+- Regular stocks: 1-4 capital letters (e.g., MSFT, AAPL)
+- Some stocks may have a fifth character for special classes
+- No special prefixes are used for regular stocks
+
+## Example Data
+
+```csv
+ticker,volume,open,close,high,low,window_start,transactions
+BCC,248274,61.68,61.99,62.565,61.41,1680033600000,4073
+CLDX,882958,35.03,34.78,35.81,34.39,1680033600000,9971
+TRND,2084,26.73,26.7662,26.7662,26.7201,1680033600000,11
+AMBA,372385,76.58,74.36,76.58,73.00,1680033600000,9874
+```
+
+## Data Interpretation
+
+- Volume represents the number of shares traded
+- Prices are in dollars per share
+- Window start time is in Unix milliseconds format
+- Transactions count represents the total number of trades for the day
+- High and low prices show the day's trading range
+- Scientific notation may be used for large volume numbers (e.g., 1.485229E+06)

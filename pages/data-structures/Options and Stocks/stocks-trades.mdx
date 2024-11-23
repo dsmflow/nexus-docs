@@ -1,0 +1,56 @@
+# Stocks Trade Level Data
+
+This document describes the structure of stock trade level data available in the Nexus Trading platform.
+
+## Data Structure
+
+Each stock trade record contains the following fields:
+
+| Field                | Type    | Description                                        |
+|---------------------|----------|----------------------------------------------------|
+| ticker              | string  | Stock symbol (e.g., MSFT, AAPL)                    |
+| price               | float   | Trade execution price                               |
+| size                | integer | Number of shares traded                             |
+| exchange            | integer | Exchange where the trade occurred                   |
+| conditions          | string  | Comma-separated list of condition codes             |
+| correction          | integer | Trade correction indicator (if applicable)          |
+| id                  | string  | Unique trade identifier                             |
+| participant_timestamp| integer | Nanosecond precision timestamp of trade execution  |
+| sequence_number     | integer | Trade sequence identifier                           |
+| sip_timestamp      | integer | SIP (Securities Information Processor) timestamp    |
+| tape               | string  | Tape identifier (market category)                   |
+| trf_id             | string  | Trade Reporting Facility identifier                 |
+| trf_timestamp      | integer | Trade reporting timestamp                           |
+
+## Stock Ticker Format
+
+Stock tickers are standard NYSE/NASDAQ symbols:
+- Regular stocks: 1-4 capital letters (e.g., MSFT, AAPL)
+- Some stocks may have a fifth character for special classes
+- No special prefixes are used for regular stocks
+
+## Example Data
+
+```csv
+ticker,conditions,correction,exchange,id,participant_timestamp,price,sequence_number,sip_timestamp,size,tape,trf_id,trf_timestamp
+MSFT,"12,37",,11,1,1679990400018025984,276.16,1550,1679990400018381329,55,3,,0
+MSFT,12,,8,1,1679990400000110000,276.75,1,1679990400000110000,100,3,,0
+MSFT,"12,37",,11,23,1679990437268629504,275.44,1816,1679990437268974780,11,3,,0
+```
+
+## Data Interpretation
+
+- Price is in dollars per share
+- Size represents the number of shares traded
+- Exchange codes represent different stock exchanges (e.g., NYSE, NASDAQ)
+- Condition codes indicate special circumstances:
+  - 12: Regular trade
+  - 37: Price variation trade
+  - 14: Odd lot trade
+  - 41: Form T trade (extended hours)
+- Multiple conditions are comma-separated in quotes
+- Timestamps are in nanosecond precision Unix format
+- Tape values indicate market category:
+  - 1: NYSE
+  - 2: NYSE American, NYSE Arca, NYSE Chicago, and IEX
+  - 3: NASDAQ

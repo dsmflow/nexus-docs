@@ -6,8 +6,8 @@
   "ml-models": "ML Models",
   "strategies": "Trading Strategies",
   "integrations": "Integrations",
+  "data-structures": "Data Structures",
   "advanced": "Advanced Features",
-  "api": "API Reference",
   "support": "Support",
   "login": {
     "title": "Login",

@@ -1,0 +1,51 @@
+# Options Minute OHLCV Data
+
+This document describes the structure of minute-by-minute options candlestick (OHLCV) data available in the Nexus Trading platform.
+
+## Data Structure
+
+Each options minute candlestick record contains the following fields:
+
+| Field         | Type    | Description                                           |
+|---------------|---------|-------------------------------------------------------|
+| ticker        | string  | Options contract identifier (e.g., O:SPY230327P00390000) |
+| volume        | integer | Trading volume for the minute                         |
+| open          | float   | Opening price for the minute                         |
+| close         | float   | Closing price for the minute                         |
+| high          | float   | Highest price during the minute                      |
+| low           | float   | Lowest price during the minute                       |
+| window_start  | integer | Start timestamp of the minute in milliseconds        |
+| transactions  | integer | Number of trades executed during the minute          |
+
+## Options Ticker Format
+
+Options tickers follow the format: `O:SYMBOL[YYMMDD][C/P][STRIKE]`
+- `O:` - Prefix indicating an options contract
+- `SYMBOL` - Underlying asset symbol (e.g., SPY, IWM)
+- `YYMMDD` - Expiration date (YY=year, MM=month, DD=day)
+- `C/P` - Option type (C=Call, P=Put)
+- `STRIKE` - Strike price (multiplied by 1000)
+
+Example: `O:SPY230327P00390000`
+- SPY: Underlying asset is SPY ETF
+- 230327: Expires on March 27, 2023
+- P: Put option
+- 00390000: Strike price of $390.00
+
+## Example Data
+
+```csv
+ticker,volume,open,close,high,low,window_start,transactions
+O:SPY230327P00390000,1,11.82,11.82,11.82,11.82,1678715580000,1
+O:SPY230327P00390000,15,11.07,11.07,11.07,11.07,1678716000000,1
+O:SPY230327P00390000,1,11.13,11.13,11.13,11.13,1678716780000,1
+```
+
+## Data Interpretation
+
+- Volume represents the number of contracts traded in that minute
+- Prices are in dollars per share (not per contract)
+- Each contract typically represents 100 shares of the underlying asset
+- Window start time is in Unix milliseconds format, representing the start of the minute
+- Transactions count provides insight into trading activity within the minute
+- Equal OHLC values in a minute typically indicate a single trade price for that period

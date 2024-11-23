@@ -1,0 +1,31 @@
+# Crypto Minute Charts
+
+Minute-by-minute candlestick data for cryptocurrency trading pairs from Polygon.io.
+
+## Data Structure
+
+| Field         | Description                                    | Type              | Example           |
+|--------------|------------------------------------------------|-------------------|-------------------|
+| ticker       | Trading pair identifier with X: prefix          | string           | X:BTCUSD         |
+| volume       | Trading volume for the minute                   | decimal/float    | 35.81103311      |
+| open         | Opening price for the minute                    | decimal/float    | 27142.85         |
+| close        | Closing price for the minute                    | decimal/float    | 27139.64         |
+| high         | Highest price during the minute                 | decimal/float    | 27145.22         |
+| low          | Lowest price during the minute                  | decimal/float    | 27098.1          |
+| start_window | Start timestamp of the minute (Unix ms)         | integer          | 1679961600000    |
+| timestamp    | Timestamp for the minute                        | integer          | 394              |
+
+## Example Data
+
+```csv
+ticker,volume,open,close,high,low,start_window,timestamp
+X:BTCUSD,35.81103311,27142.85,27139.64,27145.22,27098.1,1679961600000,394
+```
+
+## Notes
+
+- All timestamps are in Unix milliseconds format
+- Trading pairs follow the format X:BASECURRENCY[QUOTECURRENCY]
+- Volume represents the total amount of base currency traded within the minute
+- The `start_window` field marks the beginning of the minute interval
+- Timestamp field provides additional temporal reference

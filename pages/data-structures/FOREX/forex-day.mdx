@@ -1,0 +1,47 @@
+# Forex - Daily OHLCV
+
+Daily candlestick data for forex currency pairs from Polygon.io.
+
+## Data Structure
+
+| Field        | Descript ion                                    | Type             | Example          |
+|--------------|-------------------------------------------------|------------------|------------------|
+| ticker       | Currency pair identifier with C: prefix         | string           | C:EURUSD         |
+| volume       | Trading volume for the day                      | integer          | 151816           |
+| open         | Opening price for the day                       | decimal/float    | 0.90929          |
+| close        | Closing price for the day                       | decimal/float    | 0.9116132        |
+| high         | Highest price during the day                    | decimal/float    | 0.9136431        |
+| low          | Lowest price during the day                     | decimal/float    | 0.9082           |
+| window_start | Start timestamp of the day (Unix ms)            | integer          | 1680047999999    |
+| transactions | Number of trades during the day                 | integer          | 151816           |
+
+## Example Data
+
+```csv
+ticker,volume,open,close,high,low,window_start,transactions
+C:THBZAR,65503,0.5315684,0.5291029,0.5344774,0.5282698,1680047999999,65503
+C:AUDCAD,151816,0.90929,0.9116132,0.9136431,0.9082,1680047999999,151816
+C:USDIDR,4467,15106.5,15061,15114.8,15027.9,1680047999999,4467
+C:KRWSGD,172820,0.00102673,0.00102365,0.00102746,0.00102024,1680047999999,172820
+C:GBPMXN,144610,22.536167,22.46372,22.607866,22.427,1680047999999,144610
+C:CHFUSD,253862,1.0926091,1.0862589,1.094515,1.0839627,1680047999999,253862
+```
+
+## Currency Pair Format
+
+The ticker symbol follows the format `C:BASECURRENCY[QUOTECURRENCY]` where:
+- `C:` indicates a forex currency pair
+- `BASE` is the first currency in the pair (being bought or sold)
+- `QUOTE` is the second currency in the pair (used to price the base currency)
+
+Examples:
+- `C:EURUSD` - Euro priced in US Dollars
+- `C:GBPMXN` - British Pound priced in Mexican Pesos
+- `C:AUDCAD` - Australian Dollar priced in Canadian Dollars
+
+## Notes
+
+- All timestamps are in Unix milliseconds format
+- Volume represents the number of base currency units traded
+- Prices represent how much of the quote currency is needed to buy one unit of the base currency
+- The transactions field represents the total number of trades executed during the day

@@ -1,0 +1,48 @@
+# Forex Trade Level Data
+
+This document describes the structure of forex trade level data available in the Nexus Trading platform. Trade level data provides detailed information about individual forex transactions, including bid/ask prices, exchange identifiers, and precise timestamps.
+
+## Data Structure
+
+Each forex trade record contains the following fields:
+
+| Field                 | Type       | Description                                 |
+|-----------------------|------------|---------------------------------------------|
+| ticker                | string     | The forex pair identifier (e.g., "EUR-USD") |
+| ask_exchange          | integer    | Exchange identifier for the ask price       |
+| ask_price             | float      | The asking price for the currency pair      |
+| bid_exchange          | integer    | Exchange identifier for the bid price       |
+| bid_price             | float      | The bidding price for the currency pair     |
+| participant_timestamp | integer    | Nanosecond precision Unix timestamp         |
+
+## Example Data
+
+```csv
+Ticker,ask_exchange,ask_price,bid_exchange,bid_price,participant_timestamp
+X:EUR-USD,48,1.08066,48,1.08063,1679961600000000000
+X:EUR-USD,48,1.08069,48,1.08066,1679961600000000000
+X:EUR-USD,48,1.08067,48,1.08064,1679961600000000000
+```
+
+## Currency Pair Format
+
+Forex pairs follow the standard format of `BASE-QUOTE`, where:
+- BASE is the base currency (first currency in the pair)
+- QUOTE is the quote currency (second currency in the pair)
+
+For example, in "EUR-USD":
+- EUR is the base currency
+- USD is the quote currency
+- The price indicates how many USD (quote currency) are needed to buy 1 EUR (base currency)
+
+## Exchange Identifiers
+
+Exchange identifiers are numerical codes that represent different forex trading venues. The identifier "48" in the example represents a specific forex exchange.
+
+## Timestamp Format
+
+The participant_timestamp field uses nanosecond precision Unix timestamps. To convert to human-readable format:
+1. Divide by 1,000,000,000 to get Unix seconds
+2. Convert the resulting Unix timestamp to your desired datetime format
+
+For example: 1679961600000000000 nanoseconds = March 28, 2023 00:00:00 UTC
