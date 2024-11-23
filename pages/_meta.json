@@ -1,45 +1,14 @@
 {
-  "index": {
-    "title": "Introduction",
-    "type": "page"
-  },
-  "getting-started": {
-    "title": "Quick Start Guide",
-    "type": "page"
-  },
-  "portfolio-designer": {
-    "title": "Portfolio Designer",
-    "display": "visible",
-    "type": "page"
-  },
-  "technical-analysis": {
-    "title": "Technical Analysis",
-    "type": "page"
-  },
-  "ml-models": {
-    "title": "ML Models",
-    "type": "page"
-  },
-  "strategies": {
-    "title": "Trading Strategies",
-    "type": "page"
-  },
-  "integrations": {
-    "title": "Integrations",
-    "type": "page"
-  },
-  "advanced": {
-    "title": "Advanced Features",
-    "type": "page"
-  },
-  "api": {
-    "title": "API Reference",
-    "type": "page"
-  },
-  "support": {
-    "title": "Support",
-    "type": "page"
-  },
+  "index": "Introduction",
+  "getting-started": "Quick Start Guide",
+  "portfolio-designer": "Portfolio Designer",
+  "technical-analysis": "Technical Analysis",
+  "ml-models": "ML Models",
+  "strategies": "Trading Strategies",
+  "integrations": "Integrations",
+  "advanced": "Advanced Features",
+  "api": "API Reference",
+  "support": "Support",
   "login": {
     "title": "Login",
     "display": "hidden"
