@@ -1,7 +1,22 @@
 {
-  "index": "Overview",
-  "setup": "Profile Setup",
-  "strategies": "Strategy Generation",
-  "backtesting": "Backtesting",
-  "market-integration": "Market Integration"
+  "index": {
+    "title": "Overview",
+    "type": "page"
+  },
+  "setup": {
+    "title": "Profile Setup",
+    "type": "page"
+  },
+  "strategies": {
+    "title": "Strategy Generation",
+    "type": "page"
+  },
+  "backtesting": {
+    "title": "Backtesting",
+    "type": "page"
+  },
+  "market-integration": {
+    "title": "Market Integration",
+    "type": "page"
+  }
 }
