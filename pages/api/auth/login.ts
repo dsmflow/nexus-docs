@@ -6,14 +6,19 @@ import jwt from 'jsonwebtoken'
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 7 // 1 week
 
-// This would typically be replaced with your actual user database
-const VALID_USERS = [
-  {
-    email: 'user@nexustrading.com',
-    // In production, this would be a hashed password
-    password: 'your-secure-password'
-  }
-]
+// Helper function to get valid users at runtime
+const getValidUsers = () => {
+  return [
+    {
+      email: process.env.NEXUS_ADMIN_EMAIL || 'user@nexustrading.com',
+      password: process.env.NEXUS_ADMIN_PASSWORD || 'your-secure-password'
+    },
+    {
+      email: process.env.NEXUS_USER_EMAIL,
+      password: process.env.NEXUS_USER_PASSWORD
+    }
+  ].filter(user => user.email && user.password)
+}
 
 export default async function handler(
   req: NextApiRequest,
@@ -25,10 +30,10 @@ export default async function handler(
 
   const { email, password } = req.body
 
-  try {
-    // In production, you would verify against your user database
-    const user = VALID_USERS.find(u => u.email === email && u.password === password)
+  const validUsers = getValidUsers()
+  const user = validUsers.find(u => u.email === email && u.password === password)
 
+  try {
     if (!user) {
       return res.status(401).json({ message: 'Invalid credentials' })
     }
