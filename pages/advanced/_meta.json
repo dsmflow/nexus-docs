@@ -1,22 +1,7 @@
 {
-  "index": {
-    "title": "Overview",
-    "type": "page"
-  },
-  "risk-management": {
-    "title": "Risk Management",
-    "type": "page"
-  },
-  "portfolio-optimization": {
-    "title": "Portfolio Optimization",
-    "type": "page"
-  },
-  "market-analysis": {
-    "title": "Market Analysis",
-    "type": "page"
-  },
-  "automation": {
-    "title": "Trading Automation",
-    "type": "page"
-  }
+  "index": "Overview",
+  "risk-management": "Risk Management",
+  "portfolio-optimization": "Portfolio Optimization",
+  "market-analysis": "Market Analysis",
+  "automation": "Trading Automation"
 }

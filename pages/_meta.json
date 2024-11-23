@@ -9,6 +9,7 @@
   },
   "portfolio-designer": {
     "title": "Portfolio Designer",
+    "display": "visible",
     "type": "page"
   },
   "technical-analysis": {
