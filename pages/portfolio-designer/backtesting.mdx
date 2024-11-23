@@ -1,0 +1,137 @@
+# Backtesting
+
+Our backtesting system allows you to evaluate strategy performance using historical market data and sophisticated simulation techniques.
+
+## Testing Parameters
+
+### Time Period Selection
+- Custom date ranges
+- Market cycle analysis
+- Specific event periods
+- Rolling time windows
+
+### Market Conditions
+- Bull markets
+- Bear markets
+- High volatility
+- Low volatility
+- Crisis periods
+
+### Performance Metrics
+- Total return
+- Risk-adjusted return
+- Maximum drawdown
+- Sharpe ratio
+- Sortino ratio
+
+## Testing Process
+
+### 1. Data Preparation
+- Historical price data
+- Volume information
+- Corporate actions
+- Market events
+
+### 2. Strategy Simulation
+```javascript
+// Example backtesting configuration
+const backtest = {
+  strategy: strategyId,
+  timeframe: {
+    start: "2020-01-01",
+    end: "2023-12-31"
+  },
+  parameters: {
+    rebalancingPeriod: "monthly",
+    transactionCosts: true,
+    dividendHandling: "reinvest"
+  }
+};
+```
+
+### 3. Performance Analysis
+- Return calculation
+- Risk metrics
+- Transaction costs
+- Tax implications
+
+## Analysis Components
+
+### Return Analysis
+- Absolute returns
+- Relative returns
+- Risk-adjusted returns
+- Attribution analysis
+
+### Risk Metrics
+- Standard deviation
+- Beta
+- Alpha
+- Information ratio
+- Treynor ratio
+
+### Cost Analysis
+- Transaction costs
+- Slippage
+- Management fees
+- Tax efficiency
+
+## Visualization
+
+### Performance Charts
+- Equity curve
+- Drawdown chart
+- Rolling returns
+- Risk metrics
+
+### Comparison Tools
+- Benchmark overlay
+- Peer comparison
+- Style analysis
+- Factor attribution
+
+## API Integration
+
+Access backtesting through our API:
+
+```javascript
+POST /api/portfolio/backtest
+Content-Type: application/json
+
+{
+  "strategyId": "strategy_123",
+  "config": {
+    "startDate": "2020-01-01",
+    "endDate": "2023-12-31",
+    "includeCosts": true,
+    "benchmarks": ["SPY", "AGG"]
+  }
+}
+```
+
+## Results Interpretation
+
+### 1. Performance Review
+- Compare against benchmarks
+- Analyze risk metrics
+- Evaluate consistency
+- Identify strengths/weaknesses
+
+### 2. Strategy Refinement
+- Parameter optimization
+- Risk management adjustments
+- Cost optimization
+- Rebalancing frequency
+
+### 3. Implementation Decision
+- Strategy approval
+- Parameter adjustments
+- Risk control additions
+- Alternative approaches
+
+## Next Steps
+
+1. Review backtesting results
+2. Adjust strategy if needed
+3. Proceed to [Market Integration](/portfolio-designer/market-integration)
+4. Begin live trading

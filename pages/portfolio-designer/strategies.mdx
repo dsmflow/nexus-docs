@@ -1,0 +1,121 @@
+# Strategy Generation
+
+Our AI-powered strategy generation system creates personalized investment strategies based on your profile parameters.
+
+## Strategy Components
+
+### Asset Allocation
+- Stocks and ETFs
+- Bonds and fixed income
+- Alternative investments
+- Cash and equivalents
+
+### Risk Management
+- Diversification rules
+- Position sizing
+- Rebalancing triggers
+- Risk metrics monitoring
+
+### Sector Distribution
+- Market sector weightings
+- Geographic allocation
+- Market cap distribution
+- Style factors
+
+## Generation Process
+
+### 1. Profile Analysis
+- Parse investment goals
+- Evaluate risk tolerance
+- Consider time horizon
+- Account for constraints
+
+### 2. Strategy Formulation
+```javascript
+// Example strategy generation
+const strategy = {
+  assetAllocation: {
+    stocks: 0.60,    // 60% stocks
+    bonds: 0.30,     // 30% bonds
+    alternatives: 0.05, // 5% alternatives
+    cash: 0.05       // 5% cash
+  },
+  sectorWeights: {
+    technology: 0.25,
+    healthcare: 0.20,
+    financials: 0.15,
+    // ... other sectors
+  }
+};
+```
+
+### 3. Risk Assessment
+- Value at Risk (VaR) calculations
+- Volatility projections
+- Correlation analysis
+- Stress testing
+
+## Strategy Types
+
+### Conservative Growth
+- Lower volatility
+- Income focus
+- Capital preservation
+- Defensive sectors
+
+### Balanced Growth
+- Moderate risk
+- Mixed approach
+- Regular rebalancing
+- Broad diversification
+
+### Aggressive Growth
+- Higher volatility
+- Growth focus
+- Emerging markets
+- Sector concentration
+
+## Implementation
+
+### 1. Portfolio Construction
+- Select specific instruments
+- Determine position sizes
+- Set entry points
+- Define rebalancing rules
+
+### 2. Monitoring Setup
+- Track performance metrics
+- Monitor risk indicators
+- Set alert thresholds
+- Schedule reviews
+
+### 3. Adjustment Protocol
+- Market condition triggers
+- Rebalancing criteria
+- Risk limit breaches
+- Goal progress checks
+
+## API Integration
+
+Access strategy generation through our API:
+
+```javascript
+POST /api/portfolio/strategy
+Content-Type: application/json
+
+{
+  "profileId": "user_profile_123",
+  "constraints": {
+    "excludedSectors": ["tobacco", "gambling"],
+    "maxPositionSize": 0.05,
+    "rebalancingFrequency": "quarterly"
+  }
+}
+```
+
+## Next Steps
+
+1. Review generated strategy
+2. Customize parameters if needed
+3. Proceed to [Backtesting](/portfolio-designer/backtesting)
+4. Monitor performance in dashboard

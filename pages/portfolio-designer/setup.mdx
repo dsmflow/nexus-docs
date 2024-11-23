@@ -1,0 +1,96 @@
+# Profile Setup
+
+The Profile Setup interface uses Natural Language Understanding (NLU) to convert your investment preferences into actionable portfolio parameters.
+
+## Using the Interface
+
+Our NLU system analyzes your input to extract key information about:
+
+- Investment goals
+- Risk tolerance
+- Investment horizon
+- Special preferences or constraints
+
+## Example Input
+
+Here's an example of what you might tell our system:
+
+```text
+"I'm looking for long-term growth with moderate risk tolerance. 
+I want to invest for retirement in about 20 years. 
+I prefer technology and healthcare sectors, and I'd like to 
+maintain some liquid assets for emergencies."
+```
+
+## How It Works
+
+### 1. Text Analysis
+```javascript
+// The system tokenizes and analyzes your input
+const tokens = tokenizer.tokenize(text);
+```
+
+### 2. Entity Recognition
+- Identifies key investment parameters
+- Extracts temporal information
+- Recognizes sector preferences
+
+### 3. Profile Generation
+```javascript
+// Example profile output
+{
+  "goals": "long-term growth",
+  "riskTolerance": "moderate",
+  "investmentHorizon": "20 years",
+  "preferences": {
+    "sectors": ["technology", "healthcare"],
+    "liquidity": "maintain emergency fund"
+  }
+}
+```
+
+## Profile Components
+
+### Investment Goals
+- Growth
+- Income
+- Capital preservation
+- Balanced approach
+
+### Risk Tolerance
+- Conservative
+- Moderate
+- Aggressive
+- Dynamic
+
+### Investment Horizon
+- Short-term (< 2 years)
+- Medium-term (2-5 years)
+- Long-term (5+ years)
+
+## Next Steps
+
+After your profile is created:
+
+1. Review the generated profile summary
+2. Adjust any parameters if needed
+3. Proceed to [Strategy Generation](/portfolio-designer/strategies)
+
+## API Integration
+
+For programmatic access, use our API endpoint:
+
+```javascript
+POST /api/portfolio/profile
+Content-Type: application/json
+
+{
+  "text": "Your investment preferences in natural language",
+  "additionalParams": {
+    "preferredCurrency": "USD",
+    "existingPortfolio": true
+  }
+}
+```
+
+See the [API Reference](/api) for detailed documentation.
